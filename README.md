@@ -3,8 +3,7 @@
 基于Cloudflare Work的极简博客，随时随地上传，边缘函数计算，无需服务器，即刻部署。
 
 ## 概述
-其中 Easy-blog 文件夹为主要文件，blog-main.js是博客主页，blog-updata.js是博客上传页。
-## 对于文件
+其中 Easy-blog 文件夹为主要文件
 - blog-main.js 功能说明：该文件实现博客主页功能
 - blog-updata.js 功能说明：该文件实现笔记上传和管理功能
 
