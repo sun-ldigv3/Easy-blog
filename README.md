@@ -1,13 +1,40 @@
 # Easy-blog
+
 基于Cloudflare Work的极简博客，随时随地上传，边缘函数计算，无需服务器，即刻部署。
 
 ## 概述
 其中 Easy-blog 文件夹为主要文件，blog-main.js是博客主页，blog-updata.js是博客上传页。
+
 ## 使用方法
-<li>在<b>Cloudflare</b>中创建两个<b>work</b>,上传项目代码</li>
-<li>创建<b>kv存储空间</b>并命名为<b>NOTES</b>，绑定到两个<b>work</b>上
-<li>访问上传<b>blog-updata.js</b>的work,输入记事本ID与内容并点击保存</li>
-<li>访问上传<b>blog-main.js</b>的work,查看上传的笔记</li>
+- 在**Cloudflare**中创建两个**work**,上传项目代码
+- 创建**kv存储空间**并命名为**NOTES**，绑定到两个**work**上
+- 访问上传**blog-updata.js**的work,输入记事本ID与内容并点击保存
+- 访问上传**blog-main.js**的work,查看上传的笔记
 
 ## 示例
 部署示例：https://sun2009.dpdns.org
+
+## 对于文件
+
+### blog-main.js 功能说明
+该文件实现博客主页功能，主要包括：
+
+**前端界面**：
+   - 左侧导航栏：展示所有笔记的标题、预览和修改时间
+   - 右上角搜索框：支持搜索笔记内容
+   - 右侧内容区：展示选中笔记的部分内容
+   - 动画效果：卡片加载和hover效果
+
+### blog-updata.js 功能说明
+该文件实现笔记上传和管理功能，主要包括：
+
+**前端界面**：
+   - 记事本ID输入框：用于指定笔记ID
+   - 内容编辑区：用于输入和编辑笔记内容
+   - 操作按钮：加载、保存、删除笔记
+   - 本地缓存：使用Cookie保存未提交的内容，防止意外丢失
+
+## 技术栈
+- Cloudflare Workers：无服务器边缘计算平台
+- Cloudflare KV：分布式键值存储服务
+- 原生HTML/CSS/JavaScript：前端界面实现
