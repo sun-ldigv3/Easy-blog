@@ -14,7 +14,7 @@
 - 访问上传**blog-main.js**的work,查看上传的笔记
 
 ## 示例
-部署示例：https://sun2009.dpdns.org
+部署示例：https://blog.sun2009.dpdns.org
 
 
 ### 技术栈
