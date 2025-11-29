@@ -13,6 +13,34 @@
 - 访问上传**blog-updata.js**的work,输入记事本ID与内容并点击保存
 - 访问上传**blog-main.js**的work,查看上传的笔记
 
+## 本地部署
+
+1. 安装依赖：
+
+```powershell
+cd "d:\Easy-blog-main"
+npm install
+```
+
+2. 启动服务器：
+
+```powershell
+npm start
+# 或者
+node server.js
+```
+
+3. 打开浏览器：
+
+- 首页: http://localhost:3000/
+- 笔记列表: http://localhost:3000/notes.html
+- 上传/编辑笔记: http://localhost:3000/upload.html
+
+说明：
+- 该本地版本只是为了开发和离线调试而实现，模拟了原项目使用的 KV 存储（以 JSON 文件保存）。
+- 笔记保存在 `data/notes.json`，server 会在第一次运行时创建该文件。
+- 前端页面已从原始 Worker 代码中提取并做了最小修改以适配本地 API 路径。
+
 ## 示例
 部署示例：https://blog.sun2009.dpdns.org
 
