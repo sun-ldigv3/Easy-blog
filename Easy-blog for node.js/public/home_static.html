@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Easy-blog - 静态首页（离线）</title>
+  <style>
+    body{font-family:Segoe UI,Microsoft YaHei, sans-serif;max-width:900px;margin:40px auto;color:#222}
+    header{margin-bottom:24px}
+    h1{font-size:28px}
+    .note{border:1px solid #e6e6e6;padding:16px;border-radius:8px;margin-bottom:12px}
+    .meta{color:#666;font-size:13px;margin-bottom:8px}
+    .empty{color:#888;padding:40px;text-align:center;border:1px dashed #ddd;border-radius:8px}
+    nav a{margin-right:12px;color:#0b66ff;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Easy-blog（静态首页）</h1>
+    <nav>
+      <a href="./notes.html">笔记列表（动态页面）</a>
+      <a href="./upload.html">上传/编辑笔记</a>
+      <a href="./index.html">项目展示页</a>
+    </nav>
+  </header>
+
+  <!-- 以下内容根据仓库中 data/notes.json 在生成时嵌入 -->
+
+  <!-- 开始文章列表 -->
+  <section>
+    <!-- 如果没有文章，显示提示 -->
+    <div class="empty">当前没有笔记。要在线查看完整功能，请在项目目录运行 Node 服务器（见 README）。</div>
+  </section>
+
+  <footer style="margin-top:36px;color:#666;font-size:13px">本页为静态导出，不会随笔记变更自动更新；运行本地服务器可获得动态体验。</footer>
+</body>
+</html>
