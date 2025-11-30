@@ -6,11 +6,12 @@
 其中 Easy-blog 文件夹为主要文件
 - blog-main.js 功能说明：该文件实现博客主页功能
 - blog-updata.js 功能说明：该文件实现笔记上传和管理功能
+Easy-blog for node.js 是本地运行的版本
 
 ## 使用方法
 - 在**Cloudflare**中创建两个**work**,上传项目代码
 - 创建**kv存储空间**并命名为**NOTES**，绑定到两个**work**上
-- 访问上传**blog-updata.js**的work,输入记事本ID与内容并点击保存
+- 访问上传**blog-update.js**的work,输入记事本ID与内容并点击保存
 - 访问上传**blog-main.js**的work,查看上传的笔记
 
 ## 本地部署
@@ -18,7 +19,7 @@
 1. 安装依赖：
 
 ```powershell
-cd "d:\Easy-blog-main"
+cd 目录    
 npm install
 ```
 
