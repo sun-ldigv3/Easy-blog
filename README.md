@@ -6,6 +6,7 @@
 其中 Easy-blog 文件夹为主要文件
 - blog-main.js 功能说明：该文件实现博客主页功能
 - blog-update.js 功能说明：该文件实现笔记上传和管理功能
+
 Easy-blog for node.js 是本地运行的版本
 
 ## 使用方法
