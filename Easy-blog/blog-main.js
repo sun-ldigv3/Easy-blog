@@ -83,7 +83,7 @@ export default {
     return new Response("Method Not Allowed", { status: 405 });
   }
 
-  // 单页面展示：优化布局设计
+  // 单页面展示：Material Design扁平极简风格
   return new Response(`
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -93,272 +93,301 @@ export default {
   <title>Easy-blog</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #fff; color: #333; }
     
+    /* 页面渐显动画 */
+    body {
+      font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #FFFFFF;
+      color: #202124;
+      animation: pageFadeIn 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    
+    @keyframes pageFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
     /* 主布局容器 */
     .main-container {
       display: flex;
       min-height: 100vh;
     }
     
-    /* 变窄的左侧导航栏 */
+    /* Material Design左侧导航栏 */
     .sidebar {
-      width: 250px; /* 从320px缩减至250px */
-      background: #f8fafc;
-      border-right: 1px solid #e2e8f0;
+      width: 280px;
+      background: #FFFFFF;
+      border-right: 1px solid #E8EAED;
       position: fixed;
       height: 100vh;
       overflow-y: auto;
       z-index: 100;
+      box-shadow: 0 1px 2px rgba(60,64,67,0.1);
     }
     
     .sidebar-header {
-      padding: 20px;
-      border-bottom: 1px solid #e2e8f0;
-      background: white;
+      padding: 24px;
+      border-bottom: 1px solid #E8EAED;
     }
     
     .sidebar-header h2 {
-      font-size: 1.3rem; /* 适当缩小标题字号 */
-      color: #1f2937;
-      margin-bottom: 15px;
+      font-size: 20px;
+      color: #202124;
+      font-weight: 500;
     }
     
     .navigation-list {
-      padding: 15px;
+      padding: 16px;
     }
     
     .nav-item {
       display: block;
-      padding: 14px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      color: #4b5563;
+      background: transparent;
+      border-radius: 0 25px 25px 0;
+      margin: 4px 12px;
+      padding: 12px 16px;
+      color: #5F6368;
       text-decoration: none;
-      transition: all 0.3s ease;
       cursor: pointer;
-      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+      border: none;
     }
     
     .nav-item:hover {
-      background: #edf2f7;
-      color: #2563eb;
-      border-color: #e2e8f0;
-      transform: translateY(-1px);
+      background: #F1F3F4;
     }
     
     .nav-title {
-      font-weight: 600;
-      font-size: 1rem; /* 缩小导航标题字号 */
-      margin-bottom: 6px;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #202124;
     }
     
     .nav-preview {
-      font-size: 0.85rem; /* 缩小预览文字 */
-      color: #6b7280;
-      line-height: 1.3;
-      margin-bottom: 6px;
+      font-size: 12px;
+      color: #5F6368;
+      line-height: 1.4;
     }
     
     .nav-date {
-      font-size: 0.75rem; /* 缩小日期文字 */
-      color: #9ca3af;
+      font-size: 11px;
+      color: #9AA0A6;
     }
     
     .nav-empty {
       text-align: center;
-      padding: 30px 15px;
-      color: #9ca3af;
+      padding: 40px 16px;
+      color: #9AA0A6;
     }
     
-    /* 右上角搜索框设计 */
+    /* Material Design搜索框 */
     .search-container {
       position: fixed;
-      top: 25px;
-      right: 40px;
+      top: 20px;
+      right: 20px;
       z-index: 1000;
     }
     
     .search-input {
-      width: 45px;
-      height: 45px;
+      width: 48px;
+      height: 48px;
       padding: 12px 16px;
-      border: 1px solid #d1d5db;
-      border-radius: 22.5px;
-      font-size: 0.95rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border: none;
+      border-radius: 24px;
+      font-size: 14px;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: #F1F3F4;
+      box-shadow: none;
     }
     
     .search-input:focus {
-      width: 280px;
+      width: 320px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.1);
       outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
     
     .search-input:hover {
       width: 200px;
     }
     
-    /* 右侧内容区 - 调整边距 */
+    /* 右侧内容区 */
     .content-area {
       flex: 1;
-      margin-left: 250px; /* 对应导航栏宽度 */
-      padding: 35px;
+      margin-left: 280px;
+      padding: 32px;
     }
     
     header {
-      margin-bottom: 35px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #f1f5f9;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #E8EAED;
     }
     
     h1 { 
-      font-size: 2.3rem; 
-      color: #1f2937;
+      font-size: 28px; 
+      color: #202124;
+      font-weight: 400;
       margin-bottom: 8px;
     }
     
     .subtitle {
-      font-size: 1.05rem;
-      color: #6b7280;
+      font-size: 14px;
+      color: #5F6368;
     }
     
-    /* 状态提示样式 */
+    /* Material Design状态提示 */
     .alert { 
       padding: 16px; 
       border-radius: 8px; 
       margin-bottom: 20px; 
       font-weight: 500; 
+      border: none;
+      box-shadow: 0 1px 2px rgba(60,64,67,0.1);
     }
     
     .alert-error { 
-      background: #fee2e2; 
-      color: #dc2626; 
-      border: 1px solid #fecaca; 
+      background: #FCE8E6;
+      color: #C5221F;
     }
     
     .alert-success { 
-      background: #dcfce7; 
-      color: #166534; 
-      border: 1px solid #bbf7d0; 
+      background: #E6F4EA;
+      color: #137333;
     }
     
     .loading { 
       text-align: center; 
-      padding: 90px 0; 
-      color: #6b7280; 
-      font-size: 1.25rem; 
+      padding: 80px 0; 
+      color: #5F6368; 
+      font-size: 16px;
     }
     
     .empty-state { 
       text-align: center; 
-      padding: 90px 0; 
-      color: #6b7280; 
+      padding: 80px 0; 
+      color: #5F6368;
     }
     
     .empty-state p { 
-      font-size: 1.25rem; 
-      margin-bottom: 20px; 
+      font-size: 16px; 
+      margin-bottom: 16px; 
     }
     
+    /* Material Design按钮 */
     .btn { 
-      padding: 11px 22px; 
+      padding: 10px 24px; 
       border: none; 
-      border-radius: 7px; 
+      border-radius: 20px; 
       cursor: pointer; 
-      font-size: 1.05rem; 
-      font-weight: 500; 
-      transition: all 0.2s ease;
+      font-size: 14px; 
+      font-weight: 500;
+      text-transform: none;
+      box-shadow: none;
     }
     
     .btn-primary { 
-      background: #2563eb; 
-      color: white; 
+      background: #4285F4;
+      color: white;
+      box-shadow: 0 1px 2px rgba(60,64,67,0.1);
+      transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
     }
     
     .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-1px);
+      background: #3367D6;
+      box-shadow: 0 1px 3px rgba(60,64,67,0.1);
     }
     
     /* 垂直卡片布局 */
     .data-grid-vertical {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 16px;
     }
     
-    /* 放大卡片设计 */
+    /* Material Design卡片设计 */
     .data-card {
       width: 100%;
-      min-height: 210px;
-      border: 1px solid #e2e8f0;
+      min-height: 180px;
+      border: none;
       border-radius: 12px;
-      padding: 28px;
-      background: white;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+      padding: 24px;
+      background: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(60,64,67,0.1), 
+                  0 1px 3px 1px rgba(60,64,67,0.1);
+      transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+      opacity: 0;
+      transform: translateY(16px);
     }
     
     .data-card:hover {
+      box-shadow: 0 1px 3px rgba(60,64,67,0.1), 
+                  0 4px 8px 3px rgba(60,64,67,0.1);
       transform: translateY(-2px);
-      box-shadow: 0 15px 35px -6px rgba(0, 0, 0, 0.1);
-      border-color: #d1d5db;
     }
     
     .data-id {
-      font-weight: 700;
-      color: #2563eb;
-      margin-bottom: 16px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid #f3f4f6;
-      font-size: 1.25rem;
+      font-weight: 500;
+      color: #4285F4;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F1F3F4;
+      font-size: 16px;
     }
     
     .data-content {
-      color: #374151;
-      line-height: 1.65;
-      white-space: pre-line;
-      margin-bottom: 18px;
-      font-size: 1.05rem;
+      color: #202124;
+      line-height: 1.6;
+      /* 仅修改这一行：pre-wrap 保留空格/缩进，同时支持自动换行 */
+      white-space: pre-wrap;
+      margin-bottom: 16px;
+      font-size: 14px;
     }
     
     .data-meta {
-      font-size: 0.9rem;
-      color: #6b7280;
+      font-size: 12px;
+      color: #5F6368;
       text-align: right;
-      font-weight: 500;
+      font-weight: 400;
     }
     
-    /* 动画效果 */
-    @keyframes highlightPulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
-    }
-    
-    @keyframes cardEntrance {
-      0% { 
+    /* 卡片加载动画 */
+    @keyframes cardSlideUp {
+      0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
       }
-      100% { 
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
     
     .card-entering {
-      animation: cardEntrance 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation: cardSlideUp 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    
+    /* Material Design波纹效果 */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      transform: scale(0);
+      animation: ripple-animation 0.6s linear;
+    }
+    
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
   <div class="main-container">
-    <!-- 左侧导航栏 - 变窄 -->
+    <!-- Material Design左侧导航栏 -->
     <div class="sidebar">
       <div class="sidebar-header">
         <h2>导航</h2>
@@ -366,9 +395,9 @@ export default {
       <div id="navigation" class="navigation-list"></div>
     </div>
     
-    <!-- 右上角搜索框 -->
+    <!-- Material Design搜索框 -->
     <div class="search-container">
-      <input type="text" id="navSearch" placeholder="   🔍︎" class="search-input">
+      <input type="text" id="navSearch" placeholder="🔍︎" class="search-input">
     </div>
     
     <!-- 右侧内容区 -->
@@ -396,6 +425,7 @@ export default {
     document.addEventListener('DOMContentLoaded', function() {
       loadAllKVData();
       setupSearchFilter();
+      setupRippleEffects();
     });
 
     // 核心：读取所有KV数据
@@ -426,8 +456,8 @@ export default {
         // 渲染垂直卡片
         renderVerticalCards(data);
         
-        // 启动入场动画
-        setTimeout(animateCardEntrance, 100);
+        // 启动卡片入场动画
+        animateCardEntrance();
         
         document.getElementById('totalCount').textContent = data.length;
 
@@ -495,26 +525,26 @@ export default {
       if (element) {
         element.scrollIntoView({ 
           behavior: 'smooth', 
-          block: 'start' 
+          block: 'center'
         });
         
-        // 添加高亮动画
-        element.style.animation = 'highlightPulse 1.8s ease';
+        // Material Design状态指示
+        element.style.background = '#F8F9FA';
+        setTimeout(() => {
+          element.style.background = '#FFFFFF';
+        }, 1500);
       }
     }
 
-    // 卡片入场动画
+    // 卡片入场序列动画
     function animateCardEntrance() {
       const cards = document.querySelectorAll('.data-card');
       cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
         setTimeout(() => {
-          card.style.transition = 'all 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+          card.style.transition = 'all 0.5s cubic-bezier(0.4,0,0.2,1)';
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
-        }, index * 100);
+        }, index * 80);
       });
     }
 
@@ -534,6 +564,33 @@ export default {
           }
         });
       });
+    }
+
+    // Material Design波纹效果
+    function setupRippleEffects() {
+      const buttons = document.querySelectorAll('.btn, .nav-item');
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          createRipple(e);
+        });
+      });
+    }
+
+    function createRipple(event) {
+      const button = event.currentTarget;
+      const circle = document.createElement("span");
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+      
+      circle.style.width = circle.style.height = \`\${diameter}px\`;
+      circle.style.left = \`\${event.clientX - button.offsetLeft - radius}px\`;
+      circle.style.top = \`\${event.clientY - button.offsetTop - radius}px\`;
+      circle.classList.add("ripple");
+      
+      const ripple = button.getElementsByClassName("ripple")[0];
+      if (ripple) ripple.remove();
+      
+      button.appendChild(circle);
     }
 
     // 辅助函数：HTML转义
