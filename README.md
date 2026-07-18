@@ -1,6 +1,6 @@
 # Easy-blog
 
-基于Cloudflare Work的极简博客，随时随地上传，边缘函数计算，无需服务器，即刻部署。
+基于Cloudflare Workers的极简博客，随时随地上传，边缘函数计算，无需服务器，即刻部署。
 
 ## 概述
 其中 Easy-blog 文件夹为主要文件
@@ -10,10 +10,10 @@
 Easy-blog for node.js 是本地运行的版本
 
 ## 使用方法
-- 在**Cloudflare**中创建两个**work**,上传项目代码
-- 创建**kv存储空间**并命名为**NOTES**，绑定到两个**work**上
-- 访问上传**blog-update.js**的work,输入记事本ID与内容并点击保存
-- 访问上传**blog-main.js**的work,查看上传的笔记
+- 在**Cloudflare**中创建两个**workers**,上传项目代码
+- 创建**kv存储空间**并命名为**NOTES**，绑定到两个**workers**上
+- 访问上传**blog-update.js**的workers,输入记事本ID与内容并点击保存
+- 访问上传**blog-main.js**的workers,查看上传的笔记
 
 ## 本地部署
 
