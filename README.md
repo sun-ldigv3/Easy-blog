@@ -15,29 +15,6 @@ Easy-blog for node.js 是本地运行的版本
 - 访问上传**blog-update.js**的workers,输入记事本ID与内容并点击保存
 - 访问上传**blog-main.js**的workers,查看上传的笔记
 
-## 本地部署
-
-1. 安装依赖：
-
-```powershell
-cd 目录    
-npm install
-```
-
-2. 启动服务器：
-
-```powershell
-npm start
-# 或者
-node server.js
-```
-
-3. 打开浏览器：
-
-- 首页: http://localhost:3000/
-- 上传/编辑笔记: http://localhost:3000/upload
-
-
 ## 示例
 部署示例：https://blog.sun2009.dpdns.org
 
