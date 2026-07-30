@@ -16,7 +16,7 @@
 ## 示例
 部署示例：https://blog.sun2009.dpdns.org
 
-### 技术栈
+## 技术栈
 - Cloudflare Workers：无服务器边缘计算平台
 - Cloudflare KV：分布式键值存储服务
 - 原生HTML/CSS/JavaScript：前端界面实现
